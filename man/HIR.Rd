@@ -2,7 +2,7 @@
 % Please edit documentation in R/epididact.R
 \name{HIR}
 \alias{HIR}
-\title{MODEL HIR, HEALTHY-INFECTED-REMOVED}
+\title{Model HIR: Healthy - Infected - Removed}
 \usage{
 HIR(times, y, parms)
 }
@@ -13,7 +13,7 @@ HIR(times, y, parms)
 something
 }
 \description{
-COUPLED DIFFERENTIAL EQUATION MODELS TO STUDY DISEASE DEVELOPMENT
+#' COUPLED DIFFERENTIAL EQUATION MODELS TO STUDY DISEASE DEVELOPMENT
 BUILDING ON EXAMPLES PRESENTED IN MADDEN ET AL. 2007, CHAPTER 5
 }
 
