@@ -1,0 +1,9 @@
+Package: Epididact
+Title: Temporal progress of plant diseases
+Version: 0.1
+Author: Juan Pablo Edwwards Molina <edwardsmolina@gmail.com>
+Maintainer: Juan Pablo Edwwards Molina <edwardsmolina@gmail.com>
+Description: Some temporal analysis functions to explain changes in the model parameters
+Depends: R (>= 3.2.0)
+License: Something
+LazyData: true
