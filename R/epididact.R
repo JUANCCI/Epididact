@@ -1,7 +1,6 @@
-#' MODEL HIR, HEALTHY-INFECTED-REMOVED
+#' Model HIR: Healthy - Infected - Removed
 #'
-#'
-#' COUPLED DIFFERENTIAL EQUATION MODELS TO STUDY DISEASE DEVELOPMENT
+#'#' COUPLED DIFFERENTIAL EQUATION MODELS TO STUDY DISEASE DEVELOPMENT
 #' BUILDING ON EXAMPLES PRESENTED IN MADDEN ET AL. 2007, CHAPTER 5
 #'
 #' @param x a numeric
@@ -31,7 +30,18 @@ add_legend <- function(...) {
         legend(...)
 }
 
-# Compara dos epidemias logisticas en el mismo grafico
+#' plot2logis
+#'
+#' Compara dos epidemias logisticas en el mismo grafico
+#'
+#' @param y0_1 intensidad de inóculo inicial de la epidemia 1
+#' @param y0_2 intensidad de inóculo inicial de la epidemia 2
+#' @param r_1  tasa de progreso de epidemia 1
+#' @param r_2 tasa de progreso de epidemia 2
+#' @param maxt tiempo de epidemia
+#' @return Dos curvas logisticas
+#' @export
+#'
 
 plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
         par(mar=c(5,5,5,2))
@@ -60,8 +70,18 @@ plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
 
 # plot2logis(0.001, 0.001, 0.2,0.4, 30)
 
-
-# Compara dos epidemias monomolecular en el mismo grafico
+#' plot2mono
+#'
+#' Compara dos epidemias monomolecular en el mismo grafico
+#'
+#' @param y0_1 intensidad de inóculo inicial de la epidemia 1
+#' @param y0_2 intensidad de inóculo inicial de la epidemia 2
+#' @param r_1  tasa de progreso de epidemia 1
+#' @param r_2 tasa de progreso de epidemia 2
+#' @param maxt tiempo de epidemia
+#' @return Dos curvas monomolecular
+#' @export
+#'
 
 plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
         par(mar=c(5,5,5,2))
@@ -92,7 +112,18 @@ plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
 
 # plot2mono(0.1, 0.01, 0.03, 0.03, 100)
 
-# Plot 2 rectas logito
+#' plot_2logis_logito
+#'
+#' Compara dos rectas logito en el mismo grafico
+#'
+#' @param y0_1 intensidad de inóculo inicial de la epidemia 1
+#' @param y0_2 intensidad de inóculo inicial de la epidemia 2
+#' @param r_1  tasa de progreso de epidemia 1
+#' @param r_2 tasa de progreso de epidemia 2
+#' @param maxt tiempo de epidemia
+#' @return Dos rectas logitos
+#' @export
+#'
 
 plot_2logis_logito <- function(y0_1, y0_2, r_1, r_2, maxt){
         par(mar=c(5,5,5,2))
@@ -114,7 +145,19 @@ plot_2logis_logito <- function(y0_1, y0_2, r_1, r_2, maxt){
 
 # plot_2logis_logito(0.001, 0.002, 0.4, 0.4, 30)
 
-# Graficar monomolecular, logistico y gompertz
+
+
+
+#' plot3model
+#'
+#' Compara modelos monomolecular, logistico y gompertz en el mismo grafico
+#'
+#' @param y0 intensidad de inóculo inicial
+#' @param r  tasa de progreso
+#' @param maxt tiempo de epidemia
+#' @return tres curvas L, M y G en distintos gráficos
+#' @export
+#'
 
 plot3model <- function(y0,r,maxt){
 
