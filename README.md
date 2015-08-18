@@ -1,5 +1,5 @@
 # Epididact
-Some temporal analysis functions to explain changes in the model parameters 
+Some temporal analysis functions to plot epidemics 
 
 install.packages("devtools")
 
