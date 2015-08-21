@@ -147,8 +147,54 @@ plot_2logis_logito <- function(y0_1, y0_2, r_1, r_2, maxt){
 
 # plot_2logis_logito(0.001, 0.002, 0.4, 0.4, 30)
 
+#' plot2logis
+#'
+#' Compara dos epidemias logisticas en el mismo grafico
+#'
+#' @param y0_1 intensidad de inóculo inicial de la epidemia 1
+#' @param y0_2 intensidad de inóculo inicial de la epidemia 2
+#' @param y0_3 intensidad de inóculo inicial de la epidemia 3
+#' @param r_1  tasa de progreso de epidemia 1
+#' @param r_2 tasa de progreso de epidemia 2
+#' @param r_1  tasa de progreso de epidemia 3
+#' @param maxt tiempo de epidemia
+#' @return Tres curvas logisticas
+#' @export
+#'
 
+plot3logis <- function(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt){
+        par(mar=c(5,5,5,2))
+        epi1 = paste0("y0 = ", y0_1, "   r = ", r_1 )
+        epi2 = paste0("y0 = ", y0_2, "   r = ", r_2 )
+        epi3 = paste0("y0 = ", y0_3, "   r = ", r_3 )
 
+        curve(
+                1/(1+(1-y0_1)/y0_1*exp(-r_1*x)),
+                from=0, to=maxt, lwd=3,
+                xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
+                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
+        )
+        grid (NULL,NULL, lty = 6, col = "cornsilk2")
+        curve(
+                1/(1+(1-y0_2)/y0_2*exp(-r_2*x)),
+                from=0, to=maxt, col= "red",
+                add=TRUE, lwd=3
+        )
+        curve(
+                1/(1+(1-y0_3)/y0_3*exp(-r_3*x)),
+                from=0, to=maxt, col= "green",
+                add=TRUE, lwd=3
+        )
+
+               add_legend("top",
+                   legend=c(epi1, epi2, epi3),
+                   col=c("black", "red", "green"),
+                   lty=c(1,1,1),
+                   lwd=3,
+                   horiz=FALSE, bty='n', cex=1.2)
+}
+
+plot3logis(0.01, 0.01, 0.01, 0.6, 0.4, 0.2, 100)
 
 #' plot3model
 #'
