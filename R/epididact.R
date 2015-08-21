@@ -51,7 +51,7 @@ plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
         curve(
                 1/(1+(1-y0_1)/y0_1*exp(-r_1*x)),
                 from=0, to=maxt, lwd=3,
-                xlab='Tiempo (dias)', ylab='Enfermedad (0»1)', cex.lab=2,
+                xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
         )
 
@@ -91,7 +91,7 @@ plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
         curve(
                 1-(1-y0_1)*exp(-r_1*x),
                 from=0, to=maxt, lwd=3,
-                xlab='Tiempo (dias)', ylab='Enfermedad (0»1)', cex.lab=2,
+                xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
         )
 
@@ -131,7 +131,7 @@ plot_2logis_logito <- function(y0_1, y0_2, r_1, r_2, maxt){
         curve(qlogis(
                 1/(1+(1-y0_1)/y0_1*exp(-r_1*x))),
               from=0, to=maxt, lwd=3,
-              xlab='Tiempo (dias)', ylab='Enfermedad (0»1)', cex.lab=2,
+              xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
               xlim=c(0,maxt),  cex.axis=1.5,
         )
         abline(h=0,lty=2)
