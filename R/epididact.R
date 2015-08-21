@@ -54,7 +54,7 @@ plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
                 xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
         )
-
+        grid (NULL,NULL, lty = 6, col = "cornsilk2")
         curve(
                 1/(1+(1-y0_2)/y0_2*exp(-r_2*x)),
                 from=0, to=maxt, col= "red",
@@ -94,6 +94,8 @@ plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
                 xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
         )
+
+        grid (NULL,NULL, lty = 6, col = "cornsilk2")
 
         curve(
                 1-(1-y0_2)*exp(-r_2*x),
