@@ -1,26 +1,40 @@
 #' Model HIR: Healthy - Infected - Removed
 #'
-#'#' COUPLED DIFFERENTIAL EQUATION MODELS TO STUDY DISEASE DEVELOPMENT
-#' BUILDING ON EXAMPLES PRESENTED IN MADDEN ET AL. 2007, CHAPTER 5
+#' Coupled differential equation models to study disease development
+#' building on examples presented in madden et al. 2007, chapter 5
 #'
 #' @param x a numeric
 #' @return something
 #' @export
 #'
 HIR<-function(times,y,parms) {
+        library(deSolve)
         dH<- -parms["beta"]*y["H"]*y["I"]
         dI<- parms["beta"]*y["H"]*y["I"] - parms["nu"]*y["I"]
         dR<- parms["nu"]*y["I"]
         list(c(dH,dI,dR), c(N=sum(y)))
 }
 
+#' Model HLIR: Healthy - Latent - Infected - Removed
+#'
+#' Coupled differential equation models to study disease development
+#' building on examples presented in madden et al. 2007, chapter 5
+#'
+#' @param times
+#' @param y
+#' @param parms
+#' @return something
+#' @export
+#'
 HLIR<-function(times,y,parms) {
+        library(deSolve)
         dH<- -parms["beta"]*y["H"]*y["I"]
         dL<- parms["beta"]*y["H"]*y["I"] - parms["omega"]*y["L"]
         dI<- parms["omega"]*y["L"] - parms["nu"]*y["I"]
         dR<- parms["nu"]*y["I"]
         list(c(dH,dL,dI,dR),c(N=sum(y)))
-}
+
+        }
 
 add_legend <- function(...) {
         opar <- par(fig=c(0, 1, 0, 1), oma=c(1, 0, 0, 0),
@@ -52,7 +66,7 @@ plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
                 1/(1+(1-y0_1)/y0_1*exp(-r_1*x)),
                 from=0, to=maxt, lwd=3,
                 xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
-                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
+                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
         curve(
@@ -67,8 +81,6 @@ plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
                    lwd=3,
                    horiz=TRUE, bty='n', cex=1.2)
 }
-
-# plot2logis(0.001, 0.001, 0.2,0.4, 30)
 
 #' plot2mono
 #'
@@ -92,7 +104,7 @@ plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
                 1-(1-y0_1)*exp(-r_1*x),
                 from=0, to=maxt, lwd=3,
                 xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
-                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
+                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
 
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
@@ -108,11 +120,7 @@ plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
                    lty=c(1,1),
                    lwd=3,
                    horiz=TRUE, bty='n', cex=1.2)
-
-
 }
-
-# plot2mono(0.1, 0.01, 0.03, 0.03, 100)
 
 #' plot_2logis_logito
 #'
@@ -134,7 +142,7 @@ plot_2logis_logito <- function(y0_1, y0_2, r_1, r_2, maxt){
                 1/(1+(1-y0_1)/y0_1*exp(-r_1*x))),
               from=0, to=maxt, lwd=3,
               xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
-              xlim=c(0,maxt),  cex.axis=1.5,
+              xlim=c(0,maxt),  cex.axis=1.5
         )
         abline(h=0,lty=2)
         curve(qlogis(
@@ -144,8 +152,6 @@ plot_2logis_logito <- function(y0_1, y0_2, r_1, r_2, maxt){
         )
 }
 
-
-# plot_2logis_logito(0.001, 0.002, 0.4, 0.4, 30)
 
 #' plot2logis
 #'
@@ -172,7 +178,7 @@ plot3logis <- function(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt){
                 1/(1+(1-y0_1)/y0_1*exp(-r_1*x)),
                 from=0, to=maxt, lwd=3,
                 xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
-                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
+                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
         curve(
@@ -193,8 +199,6 @@ plot3logis <- function(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt){
                    lwd=3,
                    horiz=FALSE, bty='n', cex=1.2)
 }
-
-plot3logis(0.01, 0.01, 0.01, 0.6, 0.4, 0.2, 100)
 
 #' plot3model
 #'
@@ -221,9 +225,8 @@ plot3model <- function(y0,r,maxt){
         curve(1/(1+(1-y0)/y0*exp(-r*x)),
               from=0, to=maxt, lwd=3,
               xlab='', ylab='Disease (0-1)', cex.lab=2,
-              xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
+              xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
-#        abline(h=0.5, lty=2)
         text(0.9*maxt,.1,"L", adj=c(0,0), cex = 2)
 
         curve(exp(-(-log(y0))*exp(-r*x)),
@@ -232,8 +235,6 @@ plot3model <- function(y0,r,maxt){
               xlim=c(0, maxt), cex.axis=1.5
         )
         text(0.9*maxt, 0.10,"G", adj=c(0,0), cex = 2)
-#        abline(h=0.36, lty=2)
 }
 
-# plot3model(0.01,0.2,30)
 
