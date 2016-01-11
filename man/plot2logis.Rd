@@ -7,20 +7,20 @@
 plot2logis(y0_1, y0_2, r_1, r_2, maxt)
 }
 \arguments{
-\item{y0_1}{intensidad de inóculo inicial de la epidemia 1}
+\item{y0_1}{Epidemic 1: initial inoculum}
 
-\item{y0_2}{intensidad de inóculo inicial de la epidemia 2}
+\item{y0_2}{Epidemic 2: initial inoculum}
 
-\item{r_1}{tasa de progreso de epidemia 1}
+\item{r_1}{Epidemic 1: rate of progress}
 
-\item{r_2}{tasa de progreso de epidemia 2}
+\item{r_2}{Epidemic 2: rate of progress}
 
-\item{maxt}{tiempo de epidemia}
+\item{maxt}{epidemic duration (days)}
 }
 \value{
-Dos curvas logisticas
+two logistic curves
 }
 \description{
-Compara dos epidemias logisticas en el mismo grafico
+Comparison of two epidemics (logistic models) in the same plot
 }
 

@@ -2,27 +2,27 @@
 % Please edit documentation in R/epididact.R
 \name{plot3logis}
 \alias{plot3logis}
-\title{plot2logis}
+\title{plot3logis}
 \usage{
 plot3logis(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt)
 }
 \arguments{
-\item{y0_1}{intensidad de inóculo inicial de la epidemia 1}
+\item{y0_1}{Epidemic 1: initial inoculum}
 
-\item{y0_2}{intensidad de inóculo inicial de la epidemia 2}
+\item{y0_2}{Epidemic 2: initial inoculum}
 
-\item{y0_3}{intensidad de inóculo inicial de la epidemia 3}
+\item{y0_3}{Epidemic 3: initial inoculum}
 
-\item{r_1}{tasa de progreso de epidemia 1}
+\item{r_1}{Epidemic 1: rate of progress}
 
-\item{r_2}{tasa de progreso de epidemia 2}
+\item{r_2}{Epidemic 2: rate of progress}
 
-\item{maxt}{tiempo de epidemia}
+\item{maxt}{epidemic duration (days)}
 
-\item{r_1}{tasa de progreso de epidemia 3}
+\item{r_1}{Epidemic 3: rate of progress}
 }
 \value{
-Tres curvas logisticas
+Three logistic curves
 }
 \description{
 Compara dos epidemias logisticas en el mismo grafico

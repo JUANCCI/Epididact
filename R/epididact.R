@@ -46,14 +46,14 @@ add_legend <- function(...) {
 
 #' plot2logis
 #'
-#' Compara dos epidemias logisticas en el mismo grafico
+#' Comparison of two epidemics (logistic models) in the same plot
 #'
-#' @param y0_1 intensidad de inóculo inicial de la epidemia 1
-#' @param y0_2 intensidad de inóculo inicial de la epidemia 2
-#' @param r_1  tasa de progreso de epidemia 1
-#' @param r_2 tasa de progreso de epidemia 2
-#' @param maxt tiempo de epidemia
-#' @return Dos curvas logisticas
+#' @param y0_1 Epidemic 1: initial inoculum
+#' @param y0_2 Epidemic 2: initial inoculum
+#' @param r_1  Epidemic 1: rate of progress
+#' @param r_2 Epidemic 2: rate of progress
+#' @param maxt epidemic duration (days)
+#' @return two logistic curves
 #' @export
 #'
 
@@ -65,7 +65,7 @@ plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
         curve(
                 1/(1+(1-y0_1)/y0_1*exp(-r_1*x)),
                 from=0, to=maxt, lwd=3,
-                xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
+                xlab='Time (days)', ylab='Disease', cex.lab=2,
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
@@ -84,14 +84,14 @@ plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
 
 #' plot2mono
 #'
-#' Compara dos epidemias monomolecular en el mismo grafico
+#' Comparison of two epidemics (monomolecular models) in the same plot
 #'
-#' @param y0_1 intensidad de inóculo inicial de la epidemia 1
-#' @param y0_2 intensidad de inóculo inicial de la epidemia 2
-#' @param r_1  tasa de progreso de epidemia 1
-#' @param r_2 tasa de progreso de epidemia 2
-#' @param maxt tiempo de epidemia
-#' @return Dos curvas monomolecular
+#' @param y0_1 Epidemic 1: initial inoculum
+#' @param y0_2 Epidemic 2: initial inoculum
+#' @param r_1  Epidemic 1: rate of progress
+#' @param r_2 Epidemic 2: rate of progress
+#' @param maxt epidemic duration (days)
+#' @return two monomolecular curves
 #' @export
 #'
 
@@ -103,7 +103,7 @@ plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
         curve(
                 1-(1-y0_1)*exp(-r_1*x),
                 from=0, to=maxt, lwd=3,
-                xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
+                xlab='Time (days)', ylab='Disease', cex.lab=2,
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
 
@@ -124,14 +124,14 @@ plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
 
 #' plot_2logis_logito
 #'
-#' Compara dos rectas logito en el mismo grafico
+#' Comparison two logits rects in the same plot
 #'
-#' @param y0_1 intensidad de inóculo inicial de la epidemia 1
-#' @param y0_2 intensidad de inóculo inicial de la epidemia 2
-#' @param r_1  tasa de progreso de epidemia 1
-#' @param r_2 tasa de progreso de epidemia 2
-#' @param maxt tiempo de epidemia
-#' @return Dos rectas logitos
+#' @param y0_1 Epidemic 1: initial inoculum
+#' @param y0_2 Epidemic 2: initial inoculum
+#' @param r_1  Epidemic 1: rate of progress
+#' @param r_2 Epidemic 2: rate of progress
+#' @param maxt epidemic duration (days)
+#' @return Dos logits rects
 #' @export
 #'
 
@@ -141,7 +141,7 @@ plot_2logis_logito <- function(y0_1, y0_2, r_1, r_2, maxt){
         curve(qlogis(
                 1/(1+(1-y0_1)/y0_1*exp(-r_1*x))),
               from=0, to=maxt, lwd=3,
-              xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
+              xlab='Time (days)', ylab='Disease', cex.lab=2,
               xlim=c(0,maxt),  cex.axis=1.5
         )
         abline(h=0,lty=2)
@@ -153,18 +153,18 @@ plot_2logis_logito <- function(y0_1, y0_2, r_1, r_2, maxt){
 }
 
 
-#' plot2logis
+#' plot3logis
 #'
 #' Compara dos epidemias logisticas en el mismo grafico
 #'
-#' @param y0_1 intensidad de inóculo inicial de la epidemia 1
-#' @param y0_2 intensidad de inóculo inicial de la epidemia 2
-#' @param y0_3 intensidad de inóculo inicial de la epidemia 3
-#' @param r_1  tasa de progreso de epidemia 1
-#' @param r_2 tasa de progreso de epidemia 2
-#' @param r_1  tasa de progreso de epidemia 3
-#' @param maxt tiempo de epidemia
-#' @return Tres curvas logisticas
+#' @param y0_1 Epidemic 1: initial inoculum
+#' @param y0_2 Epidemic 2: initial inoculum
+#' @param y0_3 Epidemic 3: initial inoculum
+#' @param r_1  Epidemic 1: rate of progress
+#' @param r_2 Epidemic 2: rate of progress
+#' @param r_1  Epidemic 3: rate of progress
+#' @param maxt epidemic duration (days)
+#' @return Three logistic curves
 #' @export
 #'
 
@@ -177,7 +177,7 @@ plot3logis <- function(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt){
         curve(
                 1/(1+(1-y0_1)/y0_1*exp(-r_1*x)),
                 from=0, to=maxt, lwd=3,
-                xlab='Tiempo (dias)', ylab='Enfermedad', cex.lab=2,
+                xlab='Time (days)', ylab='Disease', cex.lab=2,
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
