@@ -25,6 +25,9 @@ plot3logis(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt)
 Three logistic curves
 }
 \description{
-Compara dos epidemias logisticas en el mismo grafico
+Comparison of three epidemics (logisic model) at the same plot
+}
+\examples{
+plot3logis(0.01, 0.01, 0.01, 0.05, 0.025, 0.01, 100)
 }
 

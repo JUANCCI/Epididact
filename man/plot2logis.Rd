@@ -23,4 +23,7 @@ two logistic curves
 \description{
 Comparison of two epidemics (logistic models) in the same plot
 }
+\examples{
+plot2logis(0.001, 0.001, 0.4,0.2, 60)
+}
 
