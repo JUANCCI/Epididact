@@ -28,6 +28,8 @@ Three logistic curves
 Comparison of three epidemics (logisic model) at the same plot
 }
 \examples{
-plot3logis(0.01, 0.01, 0.01, 0.05, 0.025, 0.01, 100)
+plot3logis(0.01, 0.01, 0.01,  # Initial inoculum: Epid 1, Epid 2, Epid 3
+           0.05, 0.025, 0.01, # Rate of progress: Epid 1, Epid 2, Epid 3
+           100)               # Epidemic duration
 }
 

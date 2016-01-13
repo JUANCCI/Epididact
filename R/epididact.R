@@ -21,24 +21,26 @@ add_legend <- function(...) {
 #' plot2linear(0.01, 0.01, 0.03, 0.02, 30)
 
 plot2linear <- function(y0_1, y0_2, r_1, r_2, maxt){
-        par(mar=c(8,5,3,2))
+        par(mar=c(5,5,5,2))
         epi1 = paste0("y0 = ", y0_1, "   r = ", r_1 )
         epi2 = paste0("y0 = ", y0_2, "   r = ", r_2 )
         curve(
                 y0_1 + r_1*x,
                 from=0, to=maxt, lwd=3,
-                xlab='Time (days)', ylab='Disease', cex.lab=2,
-                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
+                xlab='Time (days)', ylab='Disease',
+                xlim=c(0,maxt), ylim=c(0,1),
+                cex.lab=2, cex.axis=1.5,
         )
-        title(main = expression("y = y"[0] + "r * t" ), cex.main = 1.5)
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
-
+        text(0, 0.8, adj=0, cex=1.5,
+             expression(y ~"="~ y[0] + x*r)
+        )
         curve(
                 y0_2 + r_2*x,
                 from=0, to=maxt, col= "red",
                 add=TRUE, lwd=3
         )
-        add_legend("bottom",
+        add_legend("top",
                    legend=c(epi1, epi2),
                    col=c("black", "red"),
                    lty=c(1,1),
@@ -69,10 +71,13 @@ plot2expo <- function(y0_1, y0_2, r_1, r_2, maxt){
         curve(
                 y0_1 * exp(r_1*x),
                 from=0, to=maxt, lwd=3,
-                xlab='Time (days)', ylab='Disease', cex.lab=2,
-                xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5,
+                xlab='Time (days)', ylab='Disease',
+                cex.lab=2, cex.axis=1.5,
+                xlim=c(0,maxt), ylim=c(0,1)
         )
-
+        text(0, 0.8, adj=0, cex=1.5,
+             expression(y ~"="~ y[0] ^ ~ ~ r*x)
+             )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
 
         curve(
@@ -114,6 +119,9 @@ plot2logis <- function(y0_1, y0_2, r_1, r_2, maxt){
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
+        text(0, 0.8, adj=0, cex=1.5,
+             expression(y ~"="~ frac(1, 1+((1/y[0])-1)^ ~ ~ -r*x))
+        )
         curve(
                 1/(1+((1/y0_2)-1)*exp(-r_2*x)),
                 from=0, to=maxt, col= "red",
@@ -155,6 +163,9 @@ plot2mono <- function(y0_1, y0_2, r_1, r_2, maxt){
 
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
 
+        text(0, 0.8, adj=0, cex=1.5,
+             expression(y ~"="~ 1 - (1 - y[0]) ^ ~ ~ -r*x)
+        )
         curve(
                 1-(1-y0_2)*exp(-r_2*x),
                 from=0, to=maxt, col= "red",
@@ -196,6 +207,10 @@ plot2gomp <- function(y0_1, y0_2, r_1, r_2, maxt){
 
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
 
+        text(0, 0.8, adj=0, cex=1.5,
+             expression(y ~"="~ exp(ln(y[0])* ~ ~  exp(-rx)))
+        )
+
         curve(
                 exp(-(-log(y0_2))*exp(-r_2*x)),
                 from=0, to=maxt, col= "red",
@@ -224,7 +239,9 @@ plot2gomp <- function(y0_1, y0_2, r_1, r_2, maxt){
 #' @return Three logistic curves
 #' @export
 #' @examples
-#' plot3logis(0.01, 0.01, 0.01, 0.05, 0.025, 0.01, 100)
+#' plot3logis(0.01, 0.01, 0.01,  # Initial inoculum: Epid 1, Epid 2, Epid 3
+#'            0.05, 0.025, 0.01, # Rate of progress: Epid 1, Epid 2, Epid 3
+#'            100)               # Epidemic duration
 
 plot3logis <- function(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt){
         par(mar=c(5,5,5,2))
@@ -238,7 +255,13 @@ plot3logis <- function(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt){
                 xlab='Time (days)', ylab='Disease', cex.lab=2,
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
+
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
+
+        text(0, 0.8, adj=0, cex=1.5,
+             expression(y ~"="~ 1 - (1 - y[0]) ^ ~ ~ -r*x)
+        )
+
         curve(
                 1/(1+(1-y0_2)/y0_2*exp(-r_2*x)),
                 from=0, to=maxt, col= "red",
@@ -255,7 +278,7 @@ plot3logis <- function(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt){
                    col=c("black", "red", "green"),
                    lty=c(1,1,1),
                    lwd=3,
-                   horiz=FALSE, bty='n', cex=1.2)
+                   horiz=TRUE, bty='n', cex=1.2)
 }
 
 #' plot2logis3M
@@ -271,12 +294,15 @@ plot3logis <- function(y0_1, y0_2, y0_3, r_1, r_2, r_3, maxt){
 #' @return Two logistic curves
 #' @export
 #' @examples
-#' plot2logis3M(1, 0.7, 0.001, 0.001, 0.4, 0.4, 50)
+#' plot2logis3M(1, 0.7,       # Assintote: Epid 1, Epid 2
+#'              0.001, 0.001, # Initial inoculum: Epid 1, Epid 2
+#'              0.4, 0.4,     # Rate of progress: Epid 1, Epid 2
+#'              50)           # Epidemic duration
 
 plot2logis3M <- function(a_1, a_2, y0_1, y0_2, r_1, r_2, maxt){
         par(mar=c(5,5,5,2))
-        epi1 = paste0("a = ", a_1, "y0 = ", y0_1, "   r = ", r_1 )
-        epi2 = paste0("a = ", a_2, "y0 = ", y0_2, "   r = ", r_2 )
+        epi1 = paste0("a = ", a_1, "  y0 = ", y0_1, "   r = ", r_1 )
+        epi2 = paste0("a = ", a_2, "  y0 = ", y0_2, "   r = ", r_2 )
 
         curve(
                 a_1/(1+((a_1/y0_1)-1)*exp(-r_1*x)),
@@ -285,6 +311,9 @@ plot2logis3M <- function(a_1, a_2, y0_1, y0_2, r_1, r_2, maxt){
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
+        text(0, 0.8, adj=0, cex=1.5,
+             expression(y ~"="~ frac(a,(1+((a/y[0])-1)* ~ ~exp(-r*x))))
+        )
         curve(
                 a_2/(1+((a_2/y0_2)-1)*exp(-r_2*x)),
                 from=0, to=maxt, col= "red",
@@ -316,8 +345,8 @@ plot2logis3M <- function(a_1, a_2, y0_1, y0_2, r_1, r_2, maxt){
 
 plot2gomp3M <- function(a_1, a_2, y0_1, y0_2, r_1, r_2, maxt){
         par(mar=c(5,5,5,2))
-        epi1 = paste0("a = ", a_1, "y0 = ", y0_1, "   r = ", r_1 )
-        epi2 = paste0("a = ", a_2, "y0 = ", y0_2, "   r = ", r_2 )
+        epi1 = paste0("a = ", a_1, " y0 = ", y0_1, "   r = ", r_1 )
+        epi2 = paste0("a = ", a_2, " y0 = ", y0_2, "   r = ", r_2 )
 
         curve(
                 a_1*(exp(-(-log(y0_1))*exp(-r_1*x))),
@@ -326,6 +355,11 @@ plot2gomp3M <- function(a_1, a_2, y0_1, y0_2, r_1, r_2, maxt){
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
+
+        text(maxt*0.5, 0.1, adj=0, cex=1.5,
+             expression(y ~"="~ a*(exp(-(-log(y[0]))*exp(-r*x))))
+        )
+
         curve(
                 a_2*(exp(-(-log(y0_2))*exp(-r_2*x))),
                 from=0, to=maxt, col= "red",
@@ -373,6 +407,9 @@ plot2mono3M <- function(a_1, a_2, y0_1, y0_2, r_1, r_2, maxt){
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
 
+        text(maxt*0.5, 0.1, adj=0, cex=1.5,
+             expression(y ~"="~ a-(a-y[0])* ~~exp(-r*x))
+        )
         abline(v=0, h=c(y0_1, a_1), lty=2, col=1)
         text(x=0, y=c(y0_1, a_1), c("y0", "a"), adj= c(0.5,1), col = 1)
 
@@ -423,7 +460,8 @@ plot2gomp3J <- function(a_1, a_2, b_1, b_2, r_1, r_2, maxt){
                 xlim=c(0,maxt), ylim=c(0,1), cex.axis=1.5
         )
         grid (NULL,NULL, lty = 6, col = "cornsilk2")
-        curve(
+
+         curve(
                 a_2*(exp(-exp(b_2-r_2*x))),
                 from=0, to=maxt, col= "red",
                 add=TRUE, lwd=3

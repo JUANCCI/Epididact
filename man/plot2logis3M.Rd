@@ -25,6 +25,9 @@ Comparison of three epidemics (logisic model) at the same plot.
 from Madden, 2007: a/(1+((a/y0)-1)*exp(-r*x)),
 }
 \examples{
-plot2logis3M(1, 0.7, 0.001, 0.001, 0.4, 0.4, 50)
+plot2logis3M(1, 0.7,       # Assintote: Epid 1, Epid 2
+             0.001, 0.001, # Initial inoculum: Epid 1, Epid 2
+             0.4, 0.4,     # Rate of progress: Epid 1, Epid 2
+             50)           # Epidemic duration
 }
 
